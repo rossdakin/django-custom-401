@@ -14,7 +14,7 @@ Installation
 2) Put Custom401Middleware in your settings file:
 
    MIDDLEWARE_CLASSES = (
-       'heroism.middleware.HeroismMiddleware',
+       'custom_401.middleware.Custom401Middleware',
        ...
    )
 
