@@ -1,0 +1,37 @@
+django-custom-401
+
+Summary
+-------
+
+When you raise a PermissionDenied exception in a view, Django returns a pretty
+ugly 401 error page. Wouldn't it be great if we could customize that page?
+
+Installation
+------------
+
+1) Put custom_401 in your PYTHONPATH.
+
+2) Put Custom401Middleware in your settings file:
+
+   MIDDLEWARE_CLASSES = (
+       'heroism.middleware.HeroismMiddleware',
+       ...
+   )
+
+3) Optional: customize the default template location in custom_401/__init__.py
+
+4) Create a template to use when PermissionDenied is raised and put it in the
+   location specified in custom_401/__ini__.py. The template by default will
+   receive the exception in its context as EXCEPTION, as well as a
+   standard RequestContext (fork if you need more/less context).
+
+Note on 401
+-----------
+
+It's debatable whether or not a 401 Unauthorized error is the correct HTTP
+response to use when raising a PermissionDenied exception [1]. If you're a
+stickler for that kind of stuff, feel free to fork this project and modify
+the HTTP response to be a 403, or whatever you feel is more appropriate [2].
+
+[1] http://code.djangoproject.com/ticket/4354
+[2] http://www.djangosnippets.org/snippets/813/
